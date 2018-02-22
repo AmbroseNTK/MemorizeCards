@@ -27,6 +27,8 @@ public class BoardManager : MonoBehaviour {
     public AudioClip audioYourTurn;
     public AudioClip audioWatchOut;
 
+    public AdsInterstitial ads;
+
     AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
@@ -136,7 +138,7 @@ public class BoardManager : MonoBehaviour {
                 {
 
                     StartCoroutine(DoGameOver());
-                    
+                    ads.ShowAds();
                     return;
                 }
             }
@@ -158,7 +160,6 @@ public class BoardManager : MonoBehaviour {
         PlayClip(audioGameOver);
         textStep.text = "";
         panelTitle.GetComponent<Animator>().SetBool("isShow", false);
-
         //Leaderboard
 
         yield return new WaitForSeconds(2f);
